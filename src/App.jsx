@@ -2,6 +2,7 @@
 import { translations } from './i18n';
 import ContactPage from './ContactPage.jsx';
 import AboutPage from './AboutPage.jsx';
+import ServicesPage from './ServicesPage.jsx';
 import './index.css';
 
 const PHONE = '+919979705570';
@@ -70,7 +71,7 @@ function Navbar({ t, lang, setLang, onContactPage }) {
   const links = [
     ['#home', t.home],
     ['#/about', t.about],
-    ['#services', t.services],
+    ['#/services', t.services],
     ['#why', t.why],
     ['#creatives', t.gallery],
     ['#/contact', t.contact],
@@ -127,13 +128,17 @@ export default function App() {
     document.documentElement.lang = lang === 'gu' ? 'gu' : 'en';
   }, [lang]);
 
-  if (route === '#/contact' || route === '#/about') {
+  const subPages = {
+    '#/about': <AboutPage t={t} />,
+    '#/contact': <ContactPage t={t} lang={lang} />,
+    '#/services': <ServicesPage t={t} />,
+  };
+
+  if (subPages[route]) {
     return (
       <>
         <Navbar t={t} lang={lang} setLang={setLang} onContactPage />
-        {route === '#/about'
-          ? <AboutPage t={t} />
-          : <ContactPage t={t} lang={lang} />}
+        {subPages[route]}
       </>
     );
   }
