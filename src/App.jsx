@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { translations } from './i18n';
 import './index.css';
 
@@ -76,7 +76,7 @@ function Navbar({ t, lang, setLang }) {
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <a href="#home" className="brand">
-        <img src="/logo.png" alt="NIK'S DIGITAL" />
+        <img src="logo.png" alt="NIK'S DIGITAL" />
       </a>
 
       <nav className={`nav-links ${open ? 'open' : ''}`}>
@@ -89,7 +89,7 @@ function Navbar({ t, lang, setLang }) {
         <a href={`tel:${PHONE}`} className="nav-call">{t.callNow}</a>
         <div className="lang-toggle">
           <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
-          <button className={lang === 'gu' ? 'active' : ''} onClick={() => setLang('gu')}>ગુ</button>
+          <button className={lang === 'gu' ? 'active' : ''} onClick={() => setLang('gu')}>àª—à«</button>
         </div>
         <button className="hamburger" onClick={() => setOpen(!open)} aria-label="Menu">
           <span /><span /><span />
@@ -119,7 +119,7 @@ export default function App() {
         <div className="hero-glow" />
         <div className="hero-inner">
           <Reveal>
-            <span className="eyebrow">Smart Branding · Smart Solutions</span>
+            <span className="eyebrow">Smart Branding Â· Smart Solutions</span>
             <h1>{t.heroTitle}</h1>
             <p className="hero-sub">{t.heroSub}</p>
             <div className="hero-cta">
@@ -131,7 +131,7 @@ export default function App() {
           <div className="stats-strip">
             <div className="stat"><strong><CountUp target={3} /></strong><span>{t.statCities}</span></div>
             <div className="stat"><strong><CountUp target={6} /></strong><span>{t.statServices}</span></div>
-            <div className="stat"><strong><CountUp target={24} suffix="×7" /></strong><span>{t.statDisplay}</span></div>
+            <div className="stat"><strong><CountUp target={24} suffix="Ã—7" /></strong><span>{t.statDisplay}</span></div>
             <div className="stat"><strong><CountUp target={100} suffix="%" /></strong><span>{t.statCampaigns}</span></div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function App() {
           ))}
         </div>
         <Reveal className="poster-frame">
-          <img src="/posters/branding.jpg" alt="Strong brand, strong business" loading="lazy" />
+          <img src="posters/branding.jpg" alt="Strong brand, strong business" loading="lazy" />
         </Reveal>
       </section>
 
@@ -200,7 +200,7 @@ export default function App() {
           </Reveal>
         </div>
         <Reveal className="poster-frame">
-          <img src="/posters/comparison.jpg" alt="Rental offers vs digital display" loading="lazy" />
+          <img src="posters/comparison.jpg" alt="Rental offers vs digital display" loading="lazy" />
         </Reveal>
       </section>
 
@@ -215,12 +215,12 @@ export default function App() {
             <h3>{t.saveLeftLabel}</h3>
             <ul>
               {t.saveLeft.map((item) => (
-                <li key={item}><span className="cross">✕</span>{item}</li>
+                <li key={item}><span className="cross">âœ•</span>{item}</li>
               ))}
             </ul>
           </Reveal>
           <Reveal className="save-center">
-            <div className="coin">₹</div>
+            <div className="coin">â‚¹</div>
             <h3>{t.saveCenter}</h3>
             <p>{t.saveCenterSub}</p>
           </Reveal>
@@ -234,7 +234,7 @@ export default function App() {
           </Reveal>
         </div>
         <Reveal className="poster-frame">
-          <img src="/posters/cost-saving.jpg" alt="Reduce long-term expenses" loading="lazy" />
+          <img src="posters/cost-saving.jpg" alt="Reduce long-term expenses" loading="lazy" />
         </Reveal>
       </section>
 
@@ -245,8 +245,8 @@ export default function App() {
           <p>{t.creativesSub}</p>
         </Reveal>
         <div className="creative-grid">
-          <Reveal><img src="/posters/digital-growth.jpg" alt="Transform your business digitally" loading="lazy" /></Reveal>
-          <Reveal><img src="/posters/why-customers.jpg" alt="Why customers choose your shop" loading="lazy" /></Reveal>
+          <Reveal><img src="posters/digital-growth.jpg" alt="Transform your business digitally" loading="lazy" /></Reveal>
+          <Reveal><img src="posters/why-customers.jpg" alt="Why customers choose your shop" loading="lazy" /></Reveal>
         </div>
       </section>
 
@@ -290,13 +290,13 @@ export default function App() {
       </section>
 
       <footer className="footer">
-        <img src="/logo.png" alt="NIK'S DIGITAL" className="footer-logo" />
+        <img src="logo.png" alt="NIK'S DIGITAL" className="footer-logo" />
         <p className="footer-tag">{t.footerTag}</p>
-        <div className="footer-cities">Lunawada · Godhra · Vadodara</div>
-        <p className="copy">© {new Date().getFullYear()} NIK'S DIGITAL. {t.rights}</p>
+        <div className="footer-cities">Lunawada Â· Godhra Â· Vadodara</div>
+        <p className="copy">Â© {new Date().getFullYear()} NIK'S DIGITAL. {t.rights}</p>
       </footer>
 
-      <a href={WA_LINK} target="_blank" rel="noreferrer" className="whatsapp-float" aria-label="Chat on WhatsApp">💬</a>
+      <a href={WA_LINK} target="_blank" rel="noreferrer" className="whatsapp-float" aria-label="Chat on WhatsApp">ðŸ’¬</a>
     </>
   );
 }
