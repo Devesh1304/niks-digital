@@ -1,5 +1,6 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import { translations } from './i18n';
+import ContactPage from './ContactPage.jsx';
 import './index.css';
 
 const PHONE = '+919979705570';
@@ -36,7 +37,7 @@ function CountUp({ target, suffix = '' }) {
 }
 
 /* Fades elements in as they scroll into view */
-function Reveal({ children, className = '' }) {
+export function Reveal({ children, className = '' }) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
 
@@ -55,7 +56,7 @@ function Reveal({ children, className = '' }) {
   );
 }
 
-function Navbar({ t, lang, setLang }) {
+function Navbar({ t, lang, setLang, onContactPage }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -70,18 +71,21 @@ function Navbar({ t, lang, setLang }) {
     ['#services', t.services],
     ['#why', t.why],
     ['#creatives', t.gallery],
-    ['#contact', t.contact],
+    ['#/contact', t.contact],
   ];
+
+  // On the contact page, section links jump back to the home page first
+  const hrefFor = (href) => (onContactPage && !href.startsWith('#/') ? `./${href}` : href);
 
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <a href="#home" className="brand">
+      <a href={hrefFor('#home')} className="brand">
         <img src="logo.png" alt="NIK'S DIGITAL" />
       </a>
 
       <nav className={`nav-links ${open ? 'open' : ''}`}>
         {links.map(([href, label]) => (
-          <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>
+          <a key={href} href={hrefFor(href)} onClick={() => setOpen(false)}>{label}</a>
         ))}
       </nav>
 
@@ -105,10 +109,30 @@ export default function App() {
   });
   const t = translations[lang];
 
+  const [route, setRoute] = useState(window.location.hash);
+
+  useEffect(() => {
+    const onHash = () => {
+      setRoute(window.location.hash);
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
   useEffect(() => {
     try { localStorage.setItem('nd-lang', lang); } catch { /* storage unavailable */ }
     document.documentElement.lang = lang === 'gu' ? 'gu' : 'en';
   }, [lang]);
+
+  if (route === '#/contact') {
+    return (
+      <>
+        <Navbar t={t} lang={lang} setLang={setLang} onContactPage />
+        <ContactPage t={t} lang={lang} />
+      </>
+    );
+  }
 
   return (
     <>
