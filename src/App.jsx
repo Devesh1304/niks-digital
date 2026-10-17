@@ -3,6 +3,7 @@ import { translations } from './i18n';
 import ContactPage from './ContactPage.jsx';
 import AboutPage from './AboutPage.jsx';
 import ServicesPage from './ServicesPage.jsx';
+import ProductsPage from './ProductsPage.jsx';
 import './index.css';
 
 const PHONE = '+919979705570';
@@ -72,6 +73,7 @@ function Navbar({ t, lang, setLang, onContactPage }) {
     ['#home', t.home],
     ['#/about', t.about],
     ['#/services', t.services],
+    ['#/products', t.products],
     ['#why', t.why],
     ['#creatives', t.gallery],
     ['#/contact', t.contact],
@@ -132,6 +134,7 @@ export default function App() {
     '#/about': <AboutPage t={t} />,
     '#/contact': <ContactPage t={t} lang={lang} />,
     '#/services': <ServicesPage t={t} />,
+    '#/products': <ProductsPage t={t} />,
   };
 
   if (subPages[route]) {

@@ -1025,3 +1025,78 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .sv-block.reverse .sv-main, .sv-block.reverse .sv-side { order: initial; }
   .sv-why .cp-cards { grid-template-columns: 1fr; }
 }
+
+/* ---------- Products page ---------- */
+.pd-list { padding: 40px 6% 90px; display: grid; gap: 36px; max-width: 1200px; margin: 0 auto; }
+
+.pd-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 30px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, var(--card), #08111E);
+  border: 1px solid var(--line);
+  transition: transform 0.4s ease, border-color 0.4s, box-shadow 0.4s;
+}
+
+.pd-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--blue-neon);
+  box-shadow: 0 20px 50px rgba(0, 198, 255, 0.18);
+}
+
+.pd-card.reverse .pd-media { order: 2; }
+.pd-card.reverse .pd-body { order: 1; }
+
+.pd-media {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.12);
+}
+
+.pd-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.pd-card:hover .pd-media img { transform: scale(1.04); }
+
+.pd-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1px solid var(--green-neon);
+  color: var(--green-neon);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.pd-body h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 12px; }
+.pd-body > p { color: var(--muted); margin-bottom: 22px; }
+
+.pd-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-bottom: 22px; }
+
+.pd-panel {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(4, 8, 15, 0.55);
+  border: 1px solid var(--line);
+}
+
+.pd-panel h4 {
+  color: var(--green-neon);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.pd-sizes { color: var(--white); font-weight: 600; }
+
+.pd-actions { justify-content: flex-start; }
+
+@media (max-width: 860px) {
+  .pd-card { grid-template-columns: 1fr; padding: 20px; }
+  .pd-card.reverse .pd-media, .pd-card.reverse .pd-body { order: initial; }
+  .pd-row { grid-template-columns: 1fr; }
+}
