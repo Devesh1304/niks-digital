@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import { translations } from './i18n';
 import ContactPage from './ContactPage.jsx';
+import AboutPage from './AboutPage.jsx';
 import './index.css';
 
 const PHONE = '+919979705570';
@@ -68,6 +69,7 @@ function Navbar({ t, lang, setLang, onContactPage }) {
 
   const links = [
     ['#home', t.home],
+    ['#/about', t.about],
     ['#services', t.services],
     ['#why', t.why],
     ['#creatives', t.gallery],
@@ -125,11 +127,13 @@ export default function App() {
     document.documentElement.lang = lang === 'gu' ? 'gu' : 'en';
   }, [lang]);
 
-  if (route === '#/contact') {
+  if (route === '#/contact' || route === '#/about') {
     return (
       <>
         <Navbar t={t} lang={lang} setLang={setLang} onContactPage />
-        <ContactPage t={t} lang={lang} />
+        {route === '#/about'
+          ? <AboutPage t={t} />
+          : <ContactPage t={t} lang={lang} />}
       </>
     );
   }
