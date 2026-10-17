@@ -173,6 +173,37 @@ export default function App() {
         </div>
       </section>
 
+      {/* Products */}
+      <section className="hm-products">
+        <Reveal className="section-head">
+          <span className="eyebrow">{t.products}</span>
+          <h2>{t.homePage.productsTitle}</h2>
+          <p>{t.homePage.productsSub}</p>
+        </Reveal>
+        <div className="service-grid hm-product-grid">
+          {t.productsPage.items.map((item, i) => (
+            <Reveal key={item.title} className="service-card hm-product">
+              <img src={`posters/${item.image}`} alt={item.title} loading="lazy" />
+              <div className="hm-product-body">
+                <span className="service-num">{item.tag}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+                <a href="#/products" className="btn btn-neon hm-learn">{t.homePage.learnMore}</a>
+              </div>
+              <span className="service-line" />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Banner */}
+      <section className="hm-banner">
+        <Reveal className="hm-banner-inner">
+          <h2>{t.homePage.banner}</h2>
+          <p>{t.homePage.bannerSub}</p>
+        </Reveal>
+      </section>
+
       {/* Brand strength */}
       <section className="brand">
         <Reveal className="section-head">
@@ -284,6 +315,48 @@ export default function App() {
           <Reveal><img src="posters/digital-growth.jpg" alt="Transform your business digitally" loading="lazy" /></Reveal>
           <Reveal><img src="posters/why-customers.jpg" alt="Why customers choose your shop" loading="lazy" /></Reveal>
         </div>
+      </section>
+
+      {/* Industries */}
+      <section className="hm-industries">
+        <Reveal className="section-head">
+          <h2>{t.homePage.industriesTitle}</h2>
+          <p>{t.homePage.industriesSub}</p>
+        </Reveal>
+        <Reveal className="hm-chips">
+          {t.homePage.industries.map((name) => (
+            <span key={name} className="sv-chip">{name}</span>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* Why choose us */}
+      <section className="sv-why">
+        <Reveal className="section-head">
+          <h2>{t.homePage.whyTitle}</h2>
+          <p>{t.homePage.whySub}</p>
+        </Reveal>
+        <div className="cp-cards">
+          {t.homePage.why.map(([title, text], i) => (
+            <Reveal key={title} className="cp-card">
+              <div className="cp-icon">{['🎨', '🔧', '⚡', '♾️', '🤝', '📍'][i]}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Call to action */}
+      <section className="ab-cta">
+        <Reveal className="ab-cta-box">
+          <h2>{t.homePage.ctaTitle}</h2>
+          <p>{t.homePage.ctaText}</p>
+          <div className="cp-action-row">
+            <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn btn-neon">{t.homePage.ctaBtn}</a>
+            <a href="#/contact" className="btn btn-solid">{t.contact}</a>
+          </div>
+        </Reveal>
       </section>
 
       {/* Contact */}

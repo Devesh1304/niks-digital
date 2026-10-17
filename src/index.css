@@ -1100,3 +1100,43 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .pd-card.reverse .pd-media, .pd-card.reverse .pd-body { order: initial; }
   .pd-row { grid-template-columns: 1fr; }
 }
+
+/* ---------- Home page additions ---------- */
+.hm-products { background: var(--bg); }
+.hm-product-grid { grid-template-columns: repeat(2, 1fr); }
+.hm-product { padding: 0; overflow: hidden; }
+.hm-product img { width: 100%; height: 260px; object-fit: cover; transition: transform 0.6s ease; }
+.hm-product:hover img { transform: scale(1.04); }
+.hm-product-body { padding: 26px 28px 30px; }
+.hm-product-body h3 { font-size: 1.35rem; margin: 10px 0 10px; }
+.hm-product-body p { color: var(--muted); margin-bottom: 20px; }
+.hm-learn { font-size: 0.8rem; padding: 12px 26px; }
+
+.hm-banner {
+  padding: 90px 6%;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, rgba(10, 132, 255, 0.28), transparent 65%),
+    linear-gradient(90deg, rgba(4, 8, 15, 0.9), rgba(10, 20, 34, 0.9));
+  border-top: 1px solid rgba(0, 198, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 198, 255, 0.08);
+}
+
+.hm-banner h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 14px;
+}
+
+.hm-banner p { color: var(--muted); font-size: 1.1rem; }
+
+.hm-industries { background: var(--bg-2); }
+.hm-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 900px; margin: 0 auto; }
+.hm-chips .sv-chip { padding: 12px 22px; font-size: 0.95rem; }
+
+@media (max-width: 860px) {
+  .hm-product-grid { grid-template-columns: 1fr; }
+}
