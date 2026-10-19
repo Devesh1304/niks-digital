@@ -59,7 +59,7 @@ export function Reveal({ children, className = '' }) {
   );
 }
 
-function Navbar({ t, lang, setLang, onContactPage }) {
+function Navbar({ t, lang, setLang, onContactPage, active }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -70,13 +70,13 @@ function Navbar({ t, lang, setLang, onContactPage }) {
   }, []);
 
   const links = [
-    ['#home', t.home],
-    ['#/about', t.about],
-    ['#/services', t.services],
-    ['#/products', t.products],
-    ['#why', t.why],
-    ['#creatives', t.gallery],
-    ['#/contact', t.contact],
+    ['home', '#home', t.home],
+    ['about', '#/about', t.about],
+    ['services', '#/services', t.services],
+    ['products', '#/products', t.products],
+    ['why', '#why', t.why],
+    ['creatives', '#creatives', t.gallery],
+    ['contact', '#/contact', t.contact],
   ];
 
   // On the contact page, section links jump back to the home page first
@@ -89,8 +89,14 @@ function Navbar({ t, lang, setLang, onContactPage }) {
       </a>
 
       <nav className={`nav-links ${open ? 'open' : ''}`}>
-        {links.map(([href, label]) => (
-          <a key={href} href={hrefFor(href)} onClick={() => setOpen(false)}>{label}</a>
+        {links.map(([key, href, label]) => (
+          <a
+            key={key}
+            href={hrefFor(href)}
+            onClick={() => setOpen(false)}
+            className={active === key ? 'active' : undefined}
+            aria-current={active === key ? 'page' : undefined}
+          >{label}</a>
         ))}
       </nav>
 
@@ -130,6 +136,31 @@ export default function App() {
     document.documentElement.lang = lang === 'gu' ? 'gu' : 'en';
   }, [lang]);
 
+  // Which nav item is active on each sub-page
+  const pageKeys = {
+    '#/about': 'about',
+    '#/contact': 'contact',
+    '#/services': 'services',
+    '#/products': 'products',
+  };
+
+  // On the home page, the nav item follows the section in view
+  const [section, setSection] = useState('home');
+
+  useEffect(() => {
+    if (route.startsWith('#/')) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setSection(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['home', 'why', 'creatives', 'contact'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [route]);
+
   const subPages = {
     '#/about': <AboutPage t={t} />,
     '#/contact': <ContactPage t={t} lang={lang} />,
@@ -140,7 +171,7 @@ export default function App() {
   if (subPages[route]) {
     return (
       <>
-        <Navbar t={t} lang={lang} setLang={setLang} onContactPage />
+        <Navbar t={t} lang={lang} setLang={setLang} onContactPage active={pageKeys[route]} />
         {subPages[route]}
       </>
     );
@@ -148,7 +179,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar t={t} lang={lang} setLang={setLang} />
+      <Navbar t={t} lang={lang} setLang={setLang} active={section} />
 
       {/* Hero */}
       <section className="hero" id="home">
