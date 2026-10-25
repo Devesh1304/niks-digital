@@ -131,6 +131,11 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  // Point the circuit background at the SVG tile (works under the GitHub Pages subpath too)
+  useEffect(() => {
+    document.documentElement.style.setProperty('--circuit', `url("${import.meta.env.BASE_URL}circuit.svg")`);
+  }, []);
+
   useEffect(() => {
     try { localStorage.setItem('nd-lang', lang); } catch { /* storage unavailable */ }
     document.documentElement.lang = lang === 'gu' ? 'gu' : 'en';
