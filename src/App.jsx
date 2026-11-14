@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { translations } from './i18n';
-import circuitBg from './assets/circuit-bg.png';
 import ContactPage from './ContactPage.jsx';
 import AboutPage from './AboutPage.jsx';
 import ServicesPage from './ServicesPage.jsx';
@@ -130,11 +129,6 @@ export default function App() {
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
-  }, []);
-
-  // Blue circuit background image, set as a CSS variable used by the body
-  useEffect(() => {
-    document.documentElement.style.setProperty('--bg-photo', `url("${circuitBg}")`);
   }, []);
 
   useEffect(() => {
