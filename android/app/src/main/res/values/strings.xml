@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">NIKS DIGITAL</string>
+    <string name="title_activity_main">NIKS DIGITAL</string>
+    <string name="package_name">com.niksdigital.app</string>
+    <string name="custom_url_scheme">com.niksdigital.app</string>
+</resources>
