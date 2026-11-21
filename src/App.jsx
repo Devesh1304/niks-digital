@@ -291,7 +291,6 @@ export default function App() {
           {t.brandPoints.map((p, i) => (
             <Reveal key={p} className="point-card">
               <span className="point-icon" aria-hidden="true">{['🤝', '⭐', '📈', '🏆'][i]}</span>
-              <span className="point-index">0{i + 1}</span>
               <h3>{p}</h3>
               <span className="point-bar" />
             </Reveal>

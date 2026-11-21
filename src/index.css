@@ -1293,3 +1293,12 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 .stat { padding: 16px 16px 20px; }
 .stat strong { margin: 0; font-size: 5.2rem; font-weight: 800; line-height: 1; }
 @media (max-width: 720px) { .stat strong { font-size: 3.8rem; } }
+
+/* Stat numbers: solid blue, same as the brand card colour */
+.stat strong {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--blue-neon);
+  text-shadow: 0 0 20px rgba(0, 198, 255, 0.35);
+}
