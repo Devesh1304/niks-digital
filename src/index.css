@@ -1217,3 +1217,32 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 }
 .reveal.visible .point-bar { width: 100%; }
 .point-card:hover { box-shadow: 0 16px 40px rgba(0, 198, 255, 0.25); }
+
+/* ---------- Stat cards styled like the brand highlight cards ---------- */
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  backdrop-filter: none;
+  box-shadow: none;
+  transition: all 0.35s ease;
+}
+.stat:hover {
+  transform: translateY(-8px);
+  border-color: var(--green-neon);
+  box-shadow: 0 16px 40px rgba(124, 252, 0, 0.15);
+}
+.stat-ico {
+  font-size: 2rem;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.45));
+  animation: none;
+}
+.stat-bar {
+  width: 0;
+  margin: 16px auto 0;
+  box-shadow: 0 0 12px rgba(124, 252, 0, 0.5);
+  animation: bar-fill 1.4s ease 0.3s forwards;
+}
+@keyframes bar-fill { to { width: 100%; } }
+.stat:hover .stat-bar { width: 100%; }
