@@ -1288,3 +1288,8 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   box-shadow: 0 0 14px rgba(124, 252, 0, 0.35);
   transform: translateY(-2px);
 }
+
+/* Stat cards: less space above the number, bigger and bolder number */
+.stat { padding: 16px 16px 20px; }
+.stat strong { margin: 0; font-size: 5.2rem; font-weight: 800; line-height: 1; }
+@media (max-width: 720px) { .stat strong { font-size: 3.8rem; } }

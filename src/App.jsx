@@ -13,7 +13,7 @@ const WA_LINK = `https://wa.me/919979705570?text=${encodeURIComponent("Hi NIK'S 
 const CITIES = ['Lunawada', 'Godhra', 'Vadodara'];
 
 /* Animates a number from 0 to target once the element scrolls into view */
-function CountUp({ target, suffix = '', loop = false }) {
+function CountUp({ target, suffix = '', loop = false, duration: speed })  {
   const ref = useRef(null);
   const [value, setValue] = useState(0);
 
@@ -29,7 +29,7 @@ function CountUp({ target, suffix = '', loop = false }) {
     const run = () => {
       busy = true;
       const t0 = performance.now();
-      const duration = loop ? 3000 : 1800;
+      const duration = speed || (loop ? 6000 : 1800);
       const step = (now) => {
         const p = Math.min((now - t0) / duration, 1);
         setValue(Math.floor(p * target));
@@ -227,12 +227,12 @@ export default function App() {
 
           <div className="stats-strip">
             <div className="stat">
-              <strong><CountUp target={999} suffix="+" loop /></strong>
+              <strong><CountUp target={50} suffix="+" loop /></strong>
               <span>{t.statCities}</span>
               <span className="stat-bar" />
             </div>
             <div className="stat">
-              <strong><CountUp target={999} suffix="+" loop /></strong>
+              <strong><CountUp target={50} suffix="+" loop /></strong>
               <span>{t.statServices}</span>
               <span className="stat-bar" />
             </div>
