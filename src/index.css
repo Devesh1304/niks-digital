@@ -1246,3 +1246,8 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 }
 @keyframes bar-fill { to { width: 100%; } }
 .stat:hover .stat-bar { width: 100%; }
+
+/* Bigger stat numbers */
+.stat strong { font-size: 3.6rem; line-height: 1.1; }
+@media (max-width: 720px) { .stat strong { font-size: 2.6rem; } }
+

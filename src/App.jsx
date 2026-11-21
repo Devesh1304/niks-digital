@@ -200,25 +200,21 @@ export default function App() {
 
           <div className="stats-strip">
             <div className="stat">
-              <span className="stat-ico" aria-hidden="true">📍</span>
               <strong><CountUp target={10} suffix="+" /></strong>
               <span>{t.statCities}</span>
               <span className="stat-bar" />
             </div>
             <div className="stat">
-              <span className="stat-ico" aria-hidden="true">🎯</span>
               <strong><CountUp target={10} suffix="+" /></strong>
               <span>{t.statServices}</span>
               <span className="stat-bar" />
             </div>
             <div className="stat">
-              <span className="stat-ico" aria-hidden="true">⏱️</span>
               <strong><CountUp target={24} suffix="×7" /></strong>
               <span>{t.statDisplay}</span>
               <span className="stat-bar" />
             </div>
             <div className="stat">
-              <span className="stat-ico" aria-hidden="true">♾️</span>
               <strong><CountUp target={100} suffix="%" /></strong>
               <span>{t.statCampaigns}</span>
               <span className="stat-bar" />
