@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { translations } from './i18n';
 import ContactPage from './ContactPage.jsx';
+import NetworkBackground from './NetworkBackground.jsx';
 import AboutPage from './AboutPage.jsx';
 import ServicesPage from './ServicesPage.jsx';
 import ProductsPage from './ProductsPage.jsx';
@@ -183,6 +184,7 @@ export default function App() {
 
       {/* Hero */}
       <section className="hero" id="home">
+        <NetworkBackground />
         <div className="hero-glow" />
         <div className="hero-inner">
           <Reveal>
