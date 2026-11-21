@@ -1256,3 +1256,15 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 .stat strong { font-size: 4.4rem; font-weight: 800; line-height: 1.05; letter-spacing: -1px; }
 @media (max-width: 720px) { .stat strong { font-size: 3.2rem; } }
 
+
+/* Softer WhatsApp chat button */
+.whatsapp-float {
+  background: #1f8f4e;
+  box-shadow: 0 0 10px rgba(31, 143, 78, 0.35);
+  animation: wa-soft 3s ease-in-out infinite;
+}
+.whatsapp-float:hover { box-shadow: 0 0 16px rgba(31, 143, 78, 0.5); }
+@keyframes wa-soft {
+  0%, 100% { box-shadow: 0 0 10px rgba(31, 143, 78, 0.35); }
+  50% { box-shadow: 0 0 16px rgba(31, 143, 78, 0.45); }
+}
