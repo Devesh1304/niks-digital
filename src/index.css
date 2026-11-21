@@ -1268,3 +1268,23 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   0%, 100% { box-shadow: 0 0 10px rgba(31, 143, 78, 0.35); }
   50% { box-shadow: 0 0 16px rgba(31, 143, 78, 0.45); }
 }
+
+/* Footer social icons */
+.footer-social { display: flex; justify-content: center; gap: 14px; margin: 16px 0 10px; }
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 198, 255, 0.45);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.footer-social a:hover {
+  border-color: var(--green-neon);
+  color: var(--green-neon);
+  box-shadow: 0 0 14px rgba(124, 252, 0, 0.35);
+  transform: translateY(-2px);
+}
