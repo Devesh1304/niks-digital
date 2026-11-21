@@ -199,10 +199,30 @@ export default function App() {
           </Reveal>
 
           <div className="stats-strip">
-            <div className="stat"><strong><CountUp target={3} /></strong><span>{t.statCities}</span></div>
-            <div className="stat"><strong><CountUp target={6} /></strong><span>{t.statServices}</span></div>
-            <div className="stat"><strong><CountUp target={24} suffix="×7" /></strong><span>{t.statDisplay}</span></div>
-            <div className="stat"><strong><CountUp target={100} suffix="%" /></strong><span>{t.statCampaigns}</span></div>
+            <div className="stat">
+              <span className="stat-ico" aria-hidden="true">📍</span>
+              <strong><CountUp target={10} suffix="+" /></strong>
+              <span>{t.statCities}</span>
+              <span className="stat-bar" />
+            </div>
+            <div className="stat">
+              <span className="stat-ico" aria-hidden="true">🎯</span>
+              <strong><CountUp target={10} suffix="+" /></strong>
+              <span>{t.statServices}</span>
+              <span className="stat-bar" />
+            </div>
+            <div className="stat">
+              <span className="stat-ico" aria-hidden="true">⏱️</span>
+              <strong><CountUp target={24} suffix="×7" /></strong>
+              <span>{t.statDisplay}</span>
+              <span className="stat-bar" />
+            </div>
+            <div className="stat">
+              <span className="stat-ico" aria-hidden="true">♾️</span>
+              <strong><CountUp target={100} suffix="%" /></strong>
+              <span>{t.statCampaigns}</span>
+              <span className="stat-bar" />
+            </div>
           </div>
         </div>
       </section>
@@ -247,8 +267,10 @@ export default function App() {
         <div className="brand-points">
           {t.brandPoints.map((p, i) => (
             <Reveal key={p} className="point-card">
+              <span className="point-icon" aria-hidden="true">{['🤝', '⭐', '📈', '🏆'][i]}</span>
               <span className="point-index">0{i + 1}</span>
               <h3>{p}</h3>
+              <span className="point-bar" />
             </Reveal>
           ))}
         </div>
