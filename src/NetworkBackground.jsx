@@ -21,7 +21,9 @@ const CONFIG = {
   },
 };
 
-export default function NetworkBackground() {
+// fixed: one layer that covers the whole viewport behind every page.
+// Without it, the animation fills its parent section only.
+export default function NetworkBackground({ fixed = false }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -29,6 +31,10 @@ export default function NetworkBackground() {
     if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
     const host = canvas.parentElement;
+    const pointerTarget = fixed ? window : host;
+    const boxOf = () => (fixed
+      ? { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }
+      : host.getBoundingClientRect());
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let W = 0, H = 0, DPR = 1, nodes = [], bokeh = [], running = true, visible = true, frameId = 0;
@@ -78,7 +84,7 @@ export default function NetworkBackground() {
     }
 
     function resize() {
-      const rect = host.getBoundingClientRect();
+      const rect = boxOf();
       DPR = Math.min(window.devicePixelRatio || 1, 2);
       W = rect.width;
       H = rect.height;
@@ -207,7 +213,7 @@ export default function NetworkBackground() {
     }
 
     const onPointerMove = (e) => {
-      const r = host.getBoundingClientRect();
+      const r = boxOf();
       mouseX = ((e.clientX - r.left) / r.width - 0.5) * 2;
       mouseY = ((e.clientY - r.top) / r.height - 0.5) * 2;
     };
@@ -217,23 +223,28 @@ export default function NetworkBackground() {
     };
     const onVisibility = () => setRunning(true);
 
-    host.addEventListener('pointermove', onPointerMove);
-    host.addEventListener('pointerleave', onPointerLeave);
+    pointerTarget.addEventListener('pointermove', onPointerMove);
+    if (!fixed) host.addEventListener('pointerleave', onPointerLeave);
     document.addEventListener('visibilitychange', onVisibility);
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       setRunning(true);
     });
-    observer.observe(host);
+    observer.observe(canvas);
 
     let resizeTimer;
     const onResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(resize, 150);
     };
-    // Watch the hero itself, so the canvas is sized correctly once the page has laid out
-    const resizeObserver = new ResizeObserver(onResize);
-    resizeObserver.observe(host);
+    // Re-size when the layout changes, so the canvas is correct once the page has laid out
+    let resizeObserver = null;
+    if (fixed) {
+      window.addEventListener('resize', onResize);
+    } else {
+      resizeObserver = new ResizeObserver(onResize);
+      resizeObserver.observe(host);
+    }
 
     resize();
     frameId = requestAnimationFrame(frame);
@@ -242,13 +253,14 @@ export default function NetworkBackground() {
       running = false;
       cancelAnimationFrame(frameId);
       clearTimeout(resizeTimer);
-      host.removeEventListener('pointermove', onPointerMove);
-      host.removeEventListener('pointerleave', onPointerLeave);
+      pointerTarget.removeEventListener('pointermove', onPointerMove);
+      if (!fixed) host.removeEventListener('pointerleave', onPointerLeave);
       document.removeEventListener('visibilitychange', onVisibility);
-      resizeObserver.disconnect();
+      if (resizeObserver) resizeObserver.disconnect();
+      else window.removeEventListener('resize', onResize);
       observer.disconnect();
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="net-bg" aria-hidden="true" />;
+  return <canvas ref={canvasRef} className={fixed ? 'net-bg net-bg-fixed' : 'net-bg'} aria-hidden="true" />;
 }
