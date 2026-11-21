@@ -1,4 +1,4 @@
-﻿export const translations = {
+export const translations = {
   en: {
     home: 'Home',
     about: 'About',
@@ -198,6 +198,9 @@
       ],
     },
     homePage: {
+      growTitle: 'Grow Your Business With Digital Branding',
+      growText: 'Customers choose the brands they see, trust and remember. A strong digital presence brings new customers to your door, keeps them coming back, and helps your business grow every day.',
+      growBtn: 'Start Your Growth Plan',
       productsTitle: 'Digital Display Products For Every Need',
       productsSub: 'From digital standees to LED screens, we provide solutions tailored to your business.',
       learnMore: 'Learn More',
@@ -466,6 +469,9 @@
       ],
     },
     homePage: {
+      growTitle: 'ડિજિટલ બ્રાન્ડિંગથી તમારા બિઝનેસને આગળ વધારો',
+      growText: 'ગ્રાહકો એ બ્રાન્ડ પસંદ કરે છે જે તેઓ જુએ છે, વિશ્વાસ કરે છે અને યાદ રાખે છે. મજબૂત ડિજિટલ હાજરી નવા ગ્રાહકોને તમારા સુધી લાવે છે, તેમને પાછા લાવે છે અને તમારા બિઝનેસને દરરોજ આગળ વધારે છે.',
+      growBtn: 'તમારો ગ્રોથ પ્લાન શરૂ કરો',
       productsTitle: 'દરેક જરૂરિયાત માટે ડિજિટલ ડિસ્પ્લે ઉત્પાદનો',
       productsSub: 'ડિજિટલ સ્ટેન્ડીથી LED સ્ક્રીન સુધી, અમે તમારા બિઝનેસ માટે યોગ્ય ઉકેલ આપીએ છીએ.',
       learnMore: 'વધુ જાણો',

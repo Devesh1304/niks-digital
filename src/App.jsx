@@ -281,6 +281,14 @@ export default function App() {
         </Reveal>
       </section>
 
+      {/* Encourage digital branding for growth */}
+      <section className="hm-grow">
+        <Reveal className="hm-grow-inner">
+          <h2>{t.homePage.growTitle}</h2>
+          <p>{t.homePage.growText}</p>
+          <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn btn-neon">{t.homePage.growBtn}</a>
+        </Reveal>
+      </section>
       {/* Brand strength */}
       <section className="brand">
         <Reveal className="section-head">
