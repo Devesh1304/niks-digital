@@ -1308,3 +1308,6 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 .hm-grow-inner { max-width: 820px; margin: 0 auto; }
 .hm-grow h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); margin-bottom: 18px; }
 .hm-grow p { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px; }
+
+/* Developer credit in the footer */
+.dev-credit { margin-top: 6px; font-size: 0.8rem; opacity: 0.75; }
