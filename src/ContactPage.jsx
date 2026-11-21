@@ -44,6 +44,7 @@ export default function ContactPage({ t, lang }) {
             <h3>{c.callTitle}</h3>
             <p>{c.callText}</p>
             <a href={`tel:${PHONE}`} className="cp-value">{PHONE_DISPLAY}</a>
+            <a href="tel:+919737667050" className="cp-value">+91 97376 67050</a>
             <a href={`tel:${PHONE}`} className="btn btn-neon cp-btn">{c.callNow}</a>
           </Reveal>
 

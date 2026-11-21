@@ -428,6 +428,7 @@ export default function App() {
             <div className="info-block">
               <h4>{t.callUs}</h4>
               <a href={`tel:${PHONE}`}>+91 {PHONE_DISPLAY}</a>
+              <a href="tel:+919737667050">+91 97376 67050</a>
             </div>
             <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn btn-neon whatsapp">WhatsApp</a>
           </Reveal>
